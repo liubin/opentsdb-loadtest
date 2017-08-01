@@ -52,10 +52,10 @@ def compose_package(size, tags_count):
     return data
 
 
-def send_data(data, opentsdb):
+def send_data(data, opentsdb, timeout):
     url = "{}/api/put".format(opentsdb.strip('/'))
     try:
-        response = session.post(url, data=json.dumps(data), timeout=2)
+        response = session.post(url, data=json.dumps(data), timeout=timeout)
         if response.status_code != 204:
             click.echo(data)
             click.echo(response.content)
@@ -75,9 +75,11 @@ def send_data(data, opentsdb):
               help='Packets per second')
 @click.option('--opentsdb', default="http://localhost:4242",
               help='Opentsdb server address')
+@click.option('--timeout', default=1,
+              help='Timeout to write to opentsdb')
 @click.option('--verbose', default=False,
               help='Whether to show debug')
-def load_test(duration, mpp, tags, pps, opentsdb, verbose):
+def load_test(duration, mpp, tags, pps, opentsdb, timeout, verbose):
     click.echo('load_test duration: %s' % duration)
     click.echo('load_test mpp: %s' % mpp)
     click.echo('load_test tags: %s' % tags)
@@ -105,7 +107,7 @@ def load_test(duration, mpp, tags, pps, opentsdb, verbose):
             data = compose_package(mpp, tags)
             if verbose:
                 click.echo(json.dumps(data, indent=2))
-            send_data(data, opentsdb)
+            send_data(data, opentsdb, timeout)
             packet_sent_this_second += 1
             total_sent += mpp
         else:
