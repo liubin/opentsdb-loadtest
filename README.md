@@ -1,6 +1,20 @@
 # opentsdb-loadtest
 Simple load test for OpenTSDB 
 
+# Run in Docker
+
+With default parameters:
+
+```
+docker run liubin/opentsdb-loadtest
+```
+
+Custom parameters:
+
+```
+docker run liubin/opentsdb-loadtest -- duration 10 -- pps 5 -- mpp 400 --tags 5
+```
+
 # Install and run
 
 

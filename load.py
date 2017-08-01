@@ -111,7 +111,9 @@ def load_test(duration, mpp, tags, pps, opentsdb, verbose):
         else:
             x = time.time()
             y = int(x) + 1
-            click.echo("{}: will sleep {}".format(time_this_second, (y - x)))
+            click.echo("{}: will sleep {}, used {}".format(time_this_second,
+                                                           (y - x),
+                                                           (1 - y + x)))
             time.sleep(y - x)
 
     click.echo("total sent: {}".format(total_sent))
