@@ -20,7 +20,7 @@ def init_prefix():
     s_one_week = s_one_day / 7
 
     global metric_prefix, tagk_prefix, tagv_prefix
-    metric_prefix = "system.load_test.{}".format(s_one_day)
+    metric_prefix = "{}.system.load_test".format(s_one_day)
     tagk_prefix = "tagk_{}".format(s_one_week)
     tagv_prefix = "tagv_{}".format(s_one_hour)
 
