@@ -12,7 +12,7 @@ docker run liubin/opentsdb-loadtest
 Custom parameters:
 
 ```
-docker run liubin/opentsdb-loadtest -- duration 10 -- pps 5 -- mpp 400 --tags 5
+docker run liubin/opentsdb-loadtest --opentsdb http://10.0.0.6:4242 --duration 10 --pps 5 --mpp 400 --tags 5
 ```
 
 # Install and run
