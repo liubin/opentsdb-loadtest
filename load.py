@@ -42,7 +42,7 @@ def compose_package(size, tags_count):
         i += 1
         item = {
             "timestamp": int(time.time()) * 1000,
-            "metric": "{}.metric{}".format(metric_prefix, i),
+            "metric": "{}.metric{}".format(str(random.randint(1, 200)), i),
             "value": random.randint(1, 100),
             "tags": compose_tags(tags_count)
         }
